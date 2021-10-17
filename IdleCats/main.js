@@ -84,6 +84,7 @@ let tempCat;
 
 // Menu Functions
 let menuMove = 0;
+let move = 112;
 
 tempCat = {
 	pos: vec(G.WIDTH/2, G.HEIGHT/2),
@@ -160,17 +161,26 @@ function update() {
 			box(G.WIDTH/2, G.HEIGHT, G.WIDTH, menuMove);
 			box(13, G.HEIGHT, 25, menuMove + 15);
 
+			color("red")
+			box(13, move, 20, 12);
+			box(13, move + 14, 20, 12);
+
 			// Tab Text
 			color("white");
 			text("Menu", 3, G.HEIGHT - 4 - menuMove/2);
 
 			// Speed at which menu moves
+			move -= 1
 			menuMove += M.SPEEDMOVE;
 		}
 		else{
 			// Menu Box
 			box(G.WIDTH/2, G.HEIGHT, G.WIDTH, M.HOWTALL);
 			box(13, G.HEIGHT, 25, M.HOWTALL + 15 + 1); // +1 Varies on HOWTALL Constant (Weird)
+			
+			color("red")
+			box(13, move, 20, 12);
+			box(13, move + 14, 20, 12);
 
 			// Tab Text
 			color("white");
@@ -184,11 +194,16 @@ function update() {
 			box(G.WIDTH/2, G.HEIGHT, G.WIDTH, menuMove);
 			box(13, G.HEIGHT, 25, menuMove + 15);
 
+			color("red")
+			box(13, move, 20, 12);
+			box(13, move + 14, 20, 12);
+
 			// Tab Text
 			color("white");
 			text("Menu", 3, G.HEIGHT - 4 - menuMove/2);
 
 			// Speed at which menu moves
+			move += 1
 			menuMove -= M.SPEEDMOVE;
 		}
 		else{
