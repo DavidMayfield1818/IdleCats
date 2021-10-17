@@ -46,6 +46,9 @@ const M = {
 }
 
 let pause_dir = 6;
+let cat = 1;
+let income;
+let timer;
 
 const cat_frames = {
 	0: 'a',
@@ -107,9 +110,11 @@ function update() {
 			color: catColor
 		}
 		catList.push(tempCat);
+		timer = Date.now();
 	}
 
 	var addCat = false;
+	income = cat * 1; //do income per second calculation here
 
 	// Clicking and not in menu
 	if(input.isJustPressed && input.pos.y < M.MENUY)
@@ -138,6 +143,8 @@ function update() {
 			color: catColor
 		}
 		catList.push(tempCat);
+		score -= 10;
+		cat++;
 	}
 
 	catList.forEach((c,i) => {
@@ -215,5 +222,15 @@ function update() {
 			color("white");
 			text("Menu", 3, G.HEIGHT - 4);
 		}
+	}
+
+	//draws the income per second text
+	color("yellow");
+	var str = "+" + income + "/s";
+	text(str, 3, 9);
+	//add income every 1000 ms(1 second)
+	if(Date.now() - timer > 1000) {
+		addScore(income);
+		timer = Date.now();
 	}
 }
