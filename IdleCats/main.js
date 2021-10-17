@@ -90,7 +90,7 @@ options = {
 	isReplayEnabled: true,
 	isCapturing: true,
 	isPlayingBgm: true,
-	seed: 24,
+	seed: 235,
 	isShowingScore: true
 };
 
@@ -282,6 +282,7 @@ function update() {
 	// Clicking and not in menu
 	if(input.isJustPressed && input.pos.y < M.MENUY)
 	{
+		play("laser");
 		// Spawning in laser
 		randomLaserX = rndi(0, 200);
 		if(randomLaserX >= 0 && randomLaserX <= 100){
@@ -472,6 +473,7 @@ function update() {
 	// Buying Cats Button
 	if(input.isJustPressed && input.pos.x <= 23 && input.pos.x >= 3 && input.pos.y <= move + 6 && input.pos.y >= move - 6){
 		if(score >= catBuyingButton){
+			play("coin");
 			addCat = true;
 			addScore(-catBuyingButton);
 			catBuyingButton = Math.floor(catBuyingButton * 1.2);
@@ -481,6 +483,7 @@ function update() {
 	// Buying Lasers Button
 	if(input.isJustPressed && input.pos.x <= 77 && input.pos.x >= 57 && input.pos.y <= move + 6 && input.pos.y >= move - 6){
 		if(score >= laserBuyingButton){
+			play("coin");
 			lasers++;
 			addScore(-laserBuyingButton);
 			laserBuyingButton = Math.floor(laserBuyingButton * 1.1);
@@ -490,6 +493,7 @@ function update() {
 	// Buying ? Button box(G.WIDTH/2, move + 25, 40, 25);
 	if(input.isJustPressed && input.pos.x <= 70 && input.pos.x >= 30 && input.pos.y <= move + 37 && input.pos.y >= move + 13){
 		if(score >= questionButton){
+			play("coin");
 			questionBought = true;
 			addScore(-questionButton);
 		}
